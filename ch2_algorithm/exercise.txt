@@ -1,0 +1,64 @@
+1. show below function as Big-O.
+1) 5n^4 + 6n + 3 -> O(N^4)
+2) nlogn + 2^n + 7 -> O(2^n)
+3) 10 -> O(1)
+4) nlogn + 1000n -> O(nlogn)
+
+2. order small to large
+n, nlogn, n^2logn, n!, 2^n, n^2, n^1/2
+
+answer:
+n, nlogn, n^1/2, n^2, n^2logn, 2^n, n! 
+
+3.
+int main(){
+	int sum2, i, j, n;
+	scanf("%d", &n);
+
+	sum2 = 0;                       // (1)
+	for (i = 1; i <= n; i++){ 		// (2)
+		for (j = 1; j <= n; j++){   // (3)
+			sum2 = sum2 + 1;        // (4)
+		}
+	}
+}
+
+(1) -> (((2) -> ((3 -> 4) * n) -> (3)) * n) -> (2) -> END
+T(n) = 1 + (((2 * n) + 1) + 1) * n + 1 
+	 = 1 + (2n + 1) * n + 1
+	 = 2n^2 + n + 2
+Time Complexity: O(n^2)
+Space Complexity: O(1)
+
+4.
+T(n) = 1 + T(n)
+T(n) = 1 + T(n/2)
+T(n) = 1 + T(n/4)
+T(n) = 1 + T(n/8)
+T(n) = 1 + T(n/16)
+T(n) = 1 + T(n/32)
+T(n) = 1 + T(n/64)
+T(n) = 1 + T(n/128)
+...
+T(n) = 1 + T(n/2^k)
+
+You are going to take k steps to find the number, where
+n/2^k <= 1
+
+2^k >= n
+so, k = log2(n)
+
+5. explain the function f(5)
+
+void f(int n){
+	if (n <= 1) return 1;
+	else return (f(n-1) + f(n-2));
+}
+
+f(5) = f(4) + f(3)
+	 = (f(3) + f(2)) + (f(2) + f(1))
+	 = ((f(2) + f(1)) + (f(1) + f(0))) + (((f(1) + f(0)) + 1)) 
+	 = (((f(1) + f(0)) + 1) + (1 + 1)) + (1 + 1 + 1)
+	 = ((1 + 1 + 1) + 2) + 3
+	 = (3 + 2) + 3 
+	 = 8
