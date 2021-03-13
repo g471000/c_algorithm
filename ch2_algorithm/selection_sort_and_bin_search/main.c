@@ -23,9 +23,8 @@ int main() {
 	printf("Array after Selection Sort: ");
 	printArray(array, arraySize);	
 
-	int index = rand();
+	int index = rand() % arraySize;
 	printf("rand %d and array size %d", index, arraySize);
-	index = 5;
 
 	int searchNum = array[index];	
 	printf("\nFinding Number [%d]", searchNum);
