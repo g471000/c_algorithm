@@ -13,6 +13,7 @@ int main(){
 	scanf("%f", &f);
 	*pi = i;
 	*pf = f;
+	printf("pi, pf: \n");
 	printf("an integer %d is at %d\n", *pi, pi);
 	printf("an float %f is at %d\n", *pf, pf);
 	free(pi);
